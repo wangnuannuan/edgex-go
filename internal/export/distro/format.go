@@ -121,10 +121,10 @@ func newAzureMessage() (*AzureMessage, error) {
 		Created:    time.Now(),
 	}
 
-	id := uuid.NewV4()
+	id, _ := uuid.NewV4() ////////////////////////////////
 	msg.ID = id.String()
 
-	correlationID := uuid.NewV4()
+	correlationID, _ := uuid.NewV4()
 	msg.CorrelationID = correlationID.String()
 
 	return msg, nil
@@ -242,7 +242,7 @@ func newBIoTMessage() (*BIoTMessage, error) {
 		MsgType:  "Q",
 	}
 
-	id := uuid.NewV1()
+	id, _ := uuid.NewV1()
 	msg.MsgId = id.String()
 
 	return msg, nil

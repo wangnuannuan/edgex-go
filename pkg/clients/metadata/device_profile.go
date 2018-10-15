@@ -30,7 +30,6 @@ type DeviceProfileClient interface {
 	DeviceProfile(id string) (models.DeviceProfile, error)
 	DeviceProfiles() ([]models.DeviceProfile, error)
 	DeviceProfileForName(name string) (models.DeviceProfile, error)
-	Update(dp models.DeviceProfile) error
 	Upload(yamlString string) (string, error)
 	UploadFile(yamlFilePath string) (string, error)
 }
@@ -116,11 +115,6 @@ func (dpc *DeviceProfileRestClient) DeviceProfiles() ([]models.DeviceProfile, er
 // Get the device profile by name
 func (dpc *DeviceProfileRestClient) DeviceProfileForName(name string) (models.DeviceProfile, error) {
 	return dpc.requestDeviceProfile(dpc.url + "/name/" + name)
-}
-
-// Update an existing device profile in metadata
-func (dpc *DeviceProfileRestClient) Update(dp models.DeviceProfile) error {
-	return clients.UpdateRequest(dpc.url, dp)
 }
 
 func (dpc *DeviceProfileRestClient) Upload(yamlString string) (string, error) {

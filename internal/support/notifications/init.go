@@ -79,13 +79,9 @@ func Retry(useConsul bool, useProfile string, timeout int, wait *sync.WaitGroup,
 	return
 }
 
-func Init(useConsul bool) bool {
+func Init() bool {
 	if Configuration == nil || dbClient == nil {
 		return false
-	}
-	if useConsul {
-		chConfig = make(chan interface{})
-		go listenForConfigChanges()
 	}
 	return true
 }
